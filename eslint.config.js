@@ -1,5 +1,6 @@
 import { FlatCompat } from '@eslint/eslintrc'
 import js from '@eslint/js'
+import pluginVue from 'eslint-plugin-vue'
 import typescriptEslintParser from '@typescript-eslint/parser'
 import vueEslintParser from 'vue-eslint-parser'
 import globals from 'globals'
@@ -15,20 +16,22 @@ const compat = new FlatCompat({
 })
 
 export default [
-  // 1. Ignore patterns (replacing .eslintignore)
+  // 1. Global Ignores
   {
     ignores: ['dist/**', 'node_modules/**', 'public/**'],
   },
 
-  // 2. Base Configuration & Plugins
+  // 2. Load Vue and Legacy configs
+  ...pluginVue.configs['flat/recommended'], // Native Flat Config for Vue 3
+  
   ...compat.extends(
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:vue/vue3-recommended',
     'plugin:storybook/recommended',
     'prettier'
   ),
 
+  // 3. Custom Parser & Rules
   {
     files: ['**/*.vue', '**/*.ts', '**/*.js'],
     languageOptions: {
