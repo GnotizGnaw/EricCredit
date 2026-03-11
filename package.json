@@ -78,8 +78,8 @@
     "vite": "^6.1.0",
     "vue-eslint-parser": "^9.4.3",
     "vue-tsc": "^3.2.5",
-    "@eslint/eslintrc": "^3.2.0",
-    "@eslint/js": "^10.0.3",
+    "@eslint/eslintrc": "^3.3.4",
+    "@eslint/js": "^10.0.1",
     "globals": "^15.14.0"
   },
   "packageManager": "yarn@4.9.2"
